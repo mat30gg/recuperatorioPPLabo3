@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperatorio PP Labo 3 Mateo Geminiani</title>
+    <style>
+      table,
+      td {
+        border: 1px solid black;
+        padding: 4px;
+        border-collapse: collapse;
+      }
+      .btn-formalta {
+        margin: 2px 50px;
+      }
+      .oculto {
+        display: none;
+      }
+      #contenedor-form-elementos{
+        border: 2px solid blue;
+        float: left;
+        margin: 10px 23%;
+        padding: 7px;
+        animation: bgColor 360s infinite linear;
+        }
+        #contenedor-form-alta{
+            border: 3px solid blue;
+            padding: 7px;
+            float: left;
+            margin: 10px 25%;
+        }
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+      @keyframes bgColor {
+            12.5% {
+            background-color: hwb(0 0% 0%);
+            }
+            25% {
+            background-color: hwb(39 0% 0%);
+            }
+            37.5% {
+            background-color: hwb(60 0% 0%);
+            }
+            50% {
+            background-color: hwb(90 0% 0%);
+            }
+            62.5% {
+            background-color: hwb(180 0% 0%);
+            }
+            75% {
+                background-color: hwb(240 0% 0%);
+            }
+            87.5% {
+                background-color: hwb(260 0% 100%);
+            }
+            100% {
+                background-color: hwb(340 100% 0%);
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div id="contenedor-form-elementos">
+      <form id="form-datos">
+        <b>Form datos</b><br />
+        <div id="form-arriba">
+          <label for="filtrar-por">
+            Filtrar por:
+            <select id="filtrar-por">
+              <option value="todos">Todos</option>
+              <option value="futbolista">Futbolista</option>
+              <option value="profesional">Profesional</option>
+            </select> </label
+          ><br />
+          <label for="edad-promedio">
+            Calcular edad promedio:
+            <input type="text" id="edad-promedio" readonly />
+          </label>
+          <input
+            type="button"
+            value="Calcular"
+            id="btn-calcular-promedio"
+          /><br />
+        </div>
+        <div id="contenedor-elementos">
+          <label for="divcontenedor-checkboxes">
+            Mostrar columnas:
+            <div id="divcontenedor-checkboxes"></div>
+            <br />
+          </label>
+          <div id="divtabla-elementos">
+            <table id="tabla-elementos"></table>
+          </div>
+        </div>
+        <button id="btn-agregar" type="button">Agregar</button>
+      </form>
+    </div>
+    <div id="contenedor-form-alta" class="oculto">
+      <h1 id="titulo-form-alta"></h1>
+      <form id="id-form-alta">
+        <label for="altaidpersona">
+          ID:
+          <input type="number" min="0" id="altaidpersona" readonly /> </label
+        ><br />
+        <label for="alta-idnombre">
+          Nombre:
+          <input type="text" id="alta-idnombre" /> </label
+        ><br />
+        <label for="alta-idapellido">
+          Apellido:
+          <input type="text" id="alta-idapellido" /> </label
+        ><br />
+        <label for="altatipoelemento">
+          Tipo:
+          <select id="altatipoelemento">
+            <option selected disabled>-</option>
+            <option value="futbolista">Futbolista</option>
+            <option value="profesional">Profesional</option>
+          </select> </label
+        ><br />
+        <div id="alta-atributos-futbolista">
+          <label for="alta_idequipo">
+            Equipo:
+            <input type="text" id="alta_idequipo" /> </label
+          ><br />
+          <label for="alta_idposicion">
+            Posicion:
+            <input type="text" id="alta_idposicion" /> </label
+          ><br />
+          <label for="alta_idcantidadGoles">
+            Cantidad de goles:
+            <input type="number" id="alta_idcantidadGoles" /> </label
+          ><br />
+        </div>
+        <div id="alta-atributos-profesional">
+          <label for="alta_idtitulo">
+            Titulo:
+            <input type="text" id="alta_idtitulo" /> </label
+          ><br />
+          <label for="alta_idfacultad">
+            Facultad:
+            <input type="text" id="alta_idfacultad" /> </label
+          ><br />
+          <label for="alta_idanioGraduacion">
+            Año de graduacion:
+            <input type="number" id="alta_idanioGraduacion" /> </label
+          ><br />
+        </div>
+        <button type="button" id="btn-aceptar-alta" class="btn-formalta">
+          Aceptar
+        </button>
+        <button type="button" id="btn-aceptar-modificar" class="btn-formalta">
+          Modificar
+        </button>
+        <button type="button" id="btn-aceptar-borrar" class="btn-formalta">
+            Borrar
+        </button>
+        <button type="button" id="btn-cancelar-alta" class="btn-formalta">
+          Cancelar
+        </button>
+      </form>
+    </div>
+
+    <script>
+      class Persona {
+        constructor(id, nombre, apellido, edad) {
+          if (id != null) {
+            this.id = id;
+          }
+          if (nombre != null) {
+            this.nombre = nombre;
+          }
+          if (apellido != null) {
+            this.apellido = apellido;
+          }
+          if (edad != null && edad > 15) {
+            this.edad = edad;
+          }
+        }
+        get toString() {
+          return (
+            "ID " +
+            this.id +
+            ". " +
+            this.nombre +
+            " " +
+            this.apellido +
+            " edad: " +
+            this.edad
+          );
+        }
+        get toJson() {
+          return JSON.stringify(this);
+        }
+      }
+
+      class Futbolista extends Persona {
+        constructor(
+          id,
+          nombre,
+          apellido,
+          edad,
+          equipo,
+          posicion,
+          cantidadGoles
+        ) {
+          super(id, nombre, apellido, edad);
+          if (equipo != "") {
+            this.equipo = equipo;
+          }
+          if (posicion != "") {
+            this.posicion = posicion;
+          }
+          if (cantidadGoles > -1) {
+            this.cantidadGoles = cantidadGoles;
+          }
+        }
+        get toString() {
+          return (
+            super.toString +
+            " equipo: " +
+            this.equipo +
+            " posicion: " +
+            this.posicion +
+            " cantidad de goles: " +
+            this.cantidadGoles
+          );
+        }
+        get toJson() {
+          return JSON.stringify(this);
+        }
+      }
+
+      class Profesional extends Persona {
+        constructor(
+          id,
+          nombre,
+          apellido,
+          edad,
+          titulo,
+          facultad,
+          anioGraduacion
+        ) {
+          super(id, nombre, apellido, edad);
+          if (titulo != "") {
+            this.titulo = titulo;
+          }
+          if (facultad != "") {
+            this.facultad = facultad;
+          }
+          if (anioGraduacion > 1950) {
+            this.anioGraduacion = anioGraduacion;
+          }
+        }
+        get toString() {
+          return (
+            super.toString +
+            " titulo: " +
+            this.titulo +
+            " facultad: " +
+            this.facultad +
+            " anio de graduacion: " +
+            this.anioGraduacion
+          );
+        }
+        get toJson() {
+          return JSON.stringify(this);
+        }
+      }
+
+      function leerJson(jsonString) {
+        return JSON.parse(jsonString);
+      }
+
+      function vaciarTabla() {
+        $("tabla-elementos").replaceChildren();
+        crearTabla({ id: "--", nombre: "--", apellido: "--", edad: "--" });
+      }
+
+      function crearTabla(arrayElementos) {
+        let tablaElementos = $("tabla-elementos");
+        tablaElementos.replaceChildren();
+        if (!Array.isArray(arrayElementos)) {
+          arrayElementos = Array.from(arguments);
+        }
+        let listaPropiedades = obtenerPropiedadesUnicas(arrayElementos);
+
+        agregarHeaders(tablaElementos, listaPropiedades);
+        agregarVariosElementos(tablaElementos, arrayElementos);
+      }
+
+      function agregarHeaders(tabla, atributos) {
+        headers = tabla.insertRow();
+        headers.id = "fila-headers";
+        for (atributo of atributos) {
+          cabecero = document.createElement("th");
+          botonCelda = document.createElement("button");
+          labelBoton = document.createTextNode(atributo.nombrePropio());
+          botonCelda.id = "boton-" + atributo;
+          botonCelda.type = "button";
+          botonCelda.value = atributo;
+          botonCelda.addEventListener("click", (e) => {
+            ordenarPor( e.currentTarget["value"] );
+          })
+          botonCelda.appendChild(labelBoton);
+          cabecero.appendChild(botonCelda);
+          headers.appendChild(cabecero);
+        }
+      }
+
+      ordenAsc = true;
+      function ordenarPor( atributo ) {
+        tablaOrdenada = tablaActual.sort( (a,b) => ordenAsc ? a[atributo] > b[atributo] : a[atributo] < b[atributo]);
+        ordenAsc = !ordenAsc;
+        crearTabla(tablaOrdenada);
+      }
+
+      function agregarElemento(tabla, persona, headers) {
+        fila = tabla.insertRow();
+        fila.addEventListener("dblclick", (e) => {
+          idSeleccionado = e.currentTarget["childNodes"][0]["innerText"];
+          personaSeleccionada = arrayPersonas.filter(
+            (per) => per["id"] == idSeleccionado
+          );
+          abrirFormModificarPersona(personaSeleccionada[0]);
+        });
+        for (header of headers) {
+          dato = "--";
+          celda = fila.insertCell();
+          if (persona[header] != null) {
+            dato = persona[header];
+          }
+          celda.appendChild(document.createTextNode(dato));
+          fila.appendChild(celda);
+        }
+        return fila;
+      }
+
+      function agregarVariosElementos(tabla, arrayElementos) {
+        let listaHeaders = obtenerPropiedadesUnicas(arrayElementos);
+        for (elemento of arrayElementos) {
+          agregarElemento(tabla, elemento, listaHeaders);
+        }
+      }
+
+      function crearCheckboxes(arrayAtributos) {
+        divCheckboxes = document.createElement("div");
+        divCheckboxes.id = "div-checkbox";
+        for (atributo of arrayAtributos) {
+          labelCheckbox = document.createElement("label");
+          prototipoCheckBox = document.createElement("input");
+          prototipoCheckBox.type = "checkbox";
+          prototipoCheckBox.value = atributo;
+          prototipoCheckBox.id = "idchbx_" + atributo;
+          prototipoCheckBox.checked = true;
+          prototipoCheckBox.addEventListener("click", (e) => {
+
+          });
+          labelCheckbox.htmlFor = prototipoCheckBox.id;
+          labelCheckbox.appendChild(prototipoCheckBox);
+          labelCheckbox.appendChild(
+            document.createTextNode(atributo.nombrePropio())
+          );
+          divCheckboxes.appendChild(labelCheckbox);
+        }
+        return divCheckboxes;
+      }
+
+      function obtenerPropiedadesUnicas(arrayElementos) {
+        listCabeceros = [];
+        arrayElementos.forEach((elemento) => {
+          listCabeceros = [
+            ...new Set(listCabeceros.concat(Object.keys(elemento))),
+          ];
+        });
+        return listCabeceros;
+      }
+
+      function verificarTipoPersona(persona, tipo) {
+        if (tipo != "todos") {
+          if (tipo == "futbolista") {
+            return persona["equipo"] != null && persona["posicion"] != null;
+          } else {
+            return persona["titulo"] != null && persona["facultad"] != null;
+          }
+        } else {
+          return true;
+        }
+      }
+
+      function personasDeTipoFiltrado() {
+        return arrayPersonas.filter((persona) =>
+          verificarTipoPersona(persona, $("filtrar-por").value)
+        );
+      }
+
+      String.prototype.nombrePropio = function () {
+        str = this.toLowerCase();
+        rStrin = str.charAt(0).toUpperCase() + str.slice(1);
+        return rStrin;
+      };
+
+      function abrirFormNuevaPersona() {
+        $("titulo-form-alta").appendChild(
+          document.createTextNode("Nueva persona")
+        );
+        $("btn-aceptar-modificar").disabled = true;
+        $("btn-aceptar-alta").disabled = false;
+        $("btn-aceptar-borrar").disabled = true;
+        $("alta-atributos-futbolista").style.display = "none";
+        $("alta-atributos-profesional").style.display = "none";
+        $("altatipoelemento").disabled = false;
+        ids = arrayPersonas.map((p) => p["id"]);
+        $("altaidpersona").value = parseInt( ids.reduce((a, b) => (a < b ? b : a)) ) + 1;
+        alternarMostrarFormsAlta();
+      }
+
+      function abrirFormModificarPersona(persona) {
+        $("titulo-form-alta").appendChild(
+          document.createTextNode("Modificacion de persona")
+        );
+        $("btn-aceptar-modificar").disabled = false;
+        $("btn-aceptar-alta").disabled = true;
+        $("btn-aceptar-borrar").disabled = false;
+        $("altatipoelemento").disabled = true;
+        $("altaidpersona").value = persona["id"];
+        $("alta-idnombre").value = persona["nombre"];
+        $("alta-idapellido").value = persona["apellido"];
+        if (persona["titulo"] != null) {
+          $("alta-atributos-futbolista").style.display = "none";
+          $("alta-atributos-profesional").style.display = "";
+          $("altatipoelemento").value = "profesional";
+          $("alta_idtitulo").value = persona["titulo"];
+          $("alta_idfacultad").value = persona["facultad"];
+          $("alta_idanioGraduacion").value = persona["anioGraduacion"];
+        } else {
+          $("alta-atributos-profesional").style.display = "none";
+          $("alta-atributos-futbolista").style.display = "";
+          $("altatipoelemento").value = "futbolista";
+          $("alta_idequipo").value = persona["equipo"];
+          $("alta_idcantidadGoles").value = persona["cantidadGoles"];
+          $("alta_idposicion").value = persona["posicion"];
+        }
+        alternarMostrarFormsAlta();
+      }
+
+      function limpiarFormAlta() {
+        for (elementoAlta of $("id-form-alta")) {
+          elementoAlta.value = null;
+        }
+      }
+
+      function obtenerDatosDeAlta() {
+        return {
+          id: $("altaidpersona").value,
+          nombre: $("alta-idnombre").value,
+          apellido: $("alta-idapellido").value,
+          titulo: $("alta_idtitulo").value,
+          facultad: $("alta_idfacultad").value,
+          anioGraduacion: $("alta_idanioGraduacion").value,
+          equipo: $("alta_idequipo").value,
+          cantidadGoles: $("alta_idcantidadGoles").value,
+          posicion: $("alta_idposicion").value,
+        };
+      }
+
+      function alternarMostrarFormsAlta() {
+        $("contenedor-form-elementos").classList.toggle("oculto");
+        $("contenedor-form-alta").classList.toggle("oculto");
+      }
+
+      function terminarFormAlta() {
+        limpiarFormAlta();
+        alternarMostrarFormsAlta();
+      }
+
+      function validarFormAlta() {
+        if ($("altaidpersona").value > 0) {
+          if ($("alta-idnombre").value != "") {
+            if ($("alta-idapellido").value != "") {
+              switch ($("altatipoelemento").value) {
+                case "futbolista":
+                  if (
+                    $("alta_idequipo").value != "" &&
+                    $("alta_idequipo").value != "" &&
+                    $("alta_idcantidadGoles").value > -1
+                  )
+                    return true;
+                  break;
+                case "profesional":
+                  if (
+                    $("alta_idtitulo").value != "" &&
+                    $("alta_idfacultad").value != "" &&
+                    $("alta_idanioGraduacion").value > 1950
+                  )
+                    return true;
+                  break;
+              }
+            }
+          }
+        }
+        return false;
+      }
+
+      function borrarPorId( id ) {
+        nuevaLista = [];
+        for( persona of arrayPersonas ) {
+            if(persona.id != id ) {
+                nuevaLista.push( persona );
+            }
+        }
+        return nuevaLista;
+      }
+
+      function calcularPromedio() {
+        personas = personasDeTipoFiltrado();
+        suma = 0;
+        personas.map((a) => (suma += Number.parseInt(a["edad"])));
+        return suma / personas.length;
+      }
+
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      let arrayPersonas = JSON.parse(
+        '[{"id":1, "nombre":"Marcelo", "apellido":"Luque", "edad":45, "titulo":"Ingeniero", "facultad":"UTN","añoGraduacion":2002},{"id":2, "nombre":"Ramiro", "apellido":"Escobar", "edad":35, "titulo":"Medico","facultad":"UBA", "añoGraduacion":20012},{"id":3, "nombre":"Facundo", "apellido":"Cairo", "edad":30,"titulo":"Abogado", "facultad":"UCA", "añoGraduacion":2017},{"id":4, "nombre":"Fernando", "apellido":"Nieto","edad":18, "equipo":"Independiente", "posicion":"Delantero", "cantidadGoles":7},{"id":5, "nombre":"Manuel","apellido":"Loza", "edad":20, "equipo":"Racing", "posicion":"Volante", "cantidadGoles":2},{"id":6, "nombre":"Nicolas","apellido":"Serrano", "edad":23, "equipo":"Boca", "posicion":"Arquero", "cantidadGoles":0}]'
+      );
+
+    //   arrayPersonas = [];
+    //   for (persona of arrayPersonasjson) {
+    //     if (persona["titulo"] != null) {
+    //       arrayPersonas.push(
+    //         new Profesional(
+    //           persona.id,
+    //           persona.nombre,
+    //           persona.apellido,
+    //           persona.edad,
+    //           persona.titulo,
+    //           persona.facultad,
+    //           persona.añoGraduacion
+    //         )
+    //       );
+    //     } else {
+    //       arrayPersonas.push(
+    //         new Futbolista(
+    //           persona.id,
+    //           persona.nombre,
+    //           persona.apellido,
+    //           persona.edad,
+    //           persona.equipo,
+    //           persona.posicion,
+    //           persona.cantidadGoles
+    //         )
+    //       );
+    //     }
+    //   }
+    
+    crearTabla(arrayPersonas);
+    let tablaActual = arrayPersonas;
+    let arrayPropiedades = obtenerPropiedadesUnicas(arrayPersonas);
+
+      $("divcontenedor-checkboxes").appendChild(
+        crearCheckboxes(arrayPropiedades)
+      );
+
+      $("filtrar-por").addEventListener("input", (e) => {
+        tablaActual = personasDeTipoFiltrado();
+        crearTabla( tablaActual );
+      });
+
+      $("btn-calcular-promedio").addEventListener("click", (e) => {
+        $("edad-promedio").value = calcularPromedio();
+      });
+
+      $("btn-agregar").addEventListener("click", (e) => {
+        limpiarFormAlta();
+        abrirFormNuevaPersona();
+      });
+
+      $("btn-aceptar-alta").addEventListener("click", (e) => {
+        if (validarFormAlta()) {
+          arrayPersonas.push(obtenerDatosDeAlta());
+          terminarFormAlta();
+          crearTabla(arrayPersonas);
+        } else {
+          alert("Faltan datos o son incorrectos, porfavor revisar datos ingresados");
+        }
+      });
+
+      $("btn-aceptar-borrar").addEventListener("click", (e) => {
+        arrayPersonas = borrarPorId( obtenerDatosDeAlta().id );
+        terminarFormAlta();
+        crearTabla( arrayPersonas );
+      })
+
+      $("btn-aceptar-modificar").addEventListener("click", (e) => {
+        if( validarFormAlta() ) {
+            arrayPersonas = borrarPorId( obtenerDatosDeAlta().id );
+            arrayPersonas.push( obtenerDatosDeAlta() );
+            terminarFormAlta();
+            crearTabla( arrayPersonas );
+        } else {
+            console.log( "Datos incorrectos");
+        }
+      })
+
+      $("btn-cancelar-alta").addEventListener("click", (e) => {
+        terminarFormAlta();
+      });
+
+      $("altatipoelemento").addEventListener("input", (e) => {
+        if ($("altatipoelemento").value == "futbolista") {
+          $("alta-atributos-futbolista").style.display = "";
+          $("alta-atributos-profesional").style.display = "none";
+        } else {
+          $("alta-atributos-futbolista").style.display = "none";
+          $("alta-atributos-profesional").style.display = "";
+        }
+      });
+    </script>
+  </body>
+</html>
