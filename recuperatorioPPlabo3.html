@@ -6,6 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recuperatorio PP Labo 3 Mateo Geminiani</title>
     <style>
+      .ocultar-id td:nth-child(1) {
+        display: none;
+      }
+
+      .ocultar-nombre td:nth-child(2) {
+        display: none;
+      }
+
+      .ocultar-apellido td:nth-child(3) {
+        display: none;
+      }
+
+      .ocultar-edad td:nth-child(4) {
+        display: none;
+      }
+
+      .ocultar-titulo td:nth-child(5) {
+        display: none;
+      }
+
+      .ocultar-facultad td:nth-child(6) {
+        display: none;
+      }
+
+      .ocultar-añoGraduacion td:nth-child(7) {
+        display: none;
+      }
+
+      .ocultar-equipo td:nth-child(8) {
+        display: none;
+      }
+
+      .ocultar-posicion td:nth-child(9) {
+        display: none;
+      }
+
+      .ocultar-cantidadGoles td:nth-child(10) {
+        display: none;
+      }
+
       table,
       td {
         border: 1px solid black;
@@ -18,48 +58,53 @@
       .oculto {
         display: none;
       }
-      #contenedor-form-elementos{
+      #contenedor-form-elementos {
         border: 2px solid blue;
         float: left;
         margin: 10px 23%;
         padding: 7px;
-        animation: bgColor 360s infinite linear;
-        }
-        #contenedor-form-alta{
-            border: 3px solid blue;
-            padding: 7px;
-            float: left;
-            margin: 10px 25%;
-        }
-        body{
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
+        animation: bgColor 60s infinite linear;
+      }
+      #contenedor-form-alta {
+        border: 3px solid blue;
+        padding: 7px;
+        float: left;
+        margin: 10px 25%;
+      }
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
       @keyframes bgColor {
-            12.5% {
-            background-color: hwb(0 0% 0%);
-            }
-            25% {
-            background-color: hwb(39 0% 0%);
-            }
-            37.5% {
-            background-color: hwb(60 0% 0%);
-            }
-            50% {
-            background-color: hwb(90 0% 0%);
-            }
-            62.5% {
-            background-color: hwb(180 0% 0%);
-            }
-            75% {
-                background-color: hwb(240 0% 0%);
-            }
-            87.5% {
-                background-color: hwb(260 0% 100%);
-            }
-            100% {
-                background-color: hwb(340 100% 0%);
-            }
+        12.5% {
+          background-color: hwb(0 0% 0%);
+          color: hwb(240 0% 0%);
         }
+        25% {
+          background-color: hwb(39 0% 0%);
+        }
+        37.5% {
+          background-color: hwb(60 0% 0%);
+        }
+        50% {
+          background-color: hwb(90 0% 0%);
+        }
+        62.5% {
+          background-color: hwb(180 0% 0%);
+          color: hwb(0 0% 0%);
+        }
+        75% {
+          background-color: hwb(240 0% 0%);
+        }
+        87.5% {
+          background-color: hwb(260 0% 100%);
+          color: hwb(340 100% 0%);
+        }
+        100% {
+          background-color: hwb(340 100% 0%);
+          color: hwb(260 0% 100%);
+        }
+      }
     </style>
   </head>
   <body>
@@ -79,11 +124,8 @@
             Calcular edad promedio:
             <input type="text" id="edad-promedio" readonly />
           </label>
-          <input
-            type="button"
-            value="Calcular"
-            id="btn-calcular-promedio"
-          /><br />
+          <button type="button" id="btn-calcular-promedio">Calcular</button
+          ><br />
         </div>
         <div id="contenedor-elementos">
           <label for="divcontenedor-checkboxes">
@@ -101,9 +143,9 @@
     <div id="contenedor-form-alta" class="oculto">
       <h1 id="titulo-form-alta"></h1>
       <form id="id-form-alta">
-        <label for="altaidpersona">
+        <label for="alta-idid">
           ID:
-          <input type="number" min="0" id="altaidpersona" readonly /> </label
+          <input type="number" min="0" id="alta-idid" readonly /> </label
         ><br />
         <label for="alta-idnombre">
           Nombre:
@@ -112,6 +154,11 @@
         <label for="alta-idapellido">
           Apellido:
           <input type="text" id="alta-idapellido" /> </label
+        ><br />
+        <label for="alta-idedad">
+          <!-- 4° Se puede dar de alta la edad -->
+          Edad:
+          <input type="number" id="alta-idedad" /> </label
         ><br />
         <label for="altatipoelemento">
           Tipo:
@@ -122,31 +169,31 @@
           </select> </label
         ><br />
         <div id="alta-atributos-futbolista">
-          <label for="alta_idequipo">
+          <label for="alta-idequipo">
             Equipo:
-            <input type="text" id="alta_idequipo" /> </label
+            <input type="text" id="alta-idequipo" /> </label
           ><br />
-          <label for="alta_idposicion">
+          <label for="alta-idposicion">
             Posicion:
-            <input type="text" id="alta_idposicion" /> </label
+            <input type="text" id="alta-idposicion" /> </label
           ><br />
-          <label for="alta_idcantidadGoles">
+          <label for="alta-idcantidadGoles">
             Cantidad de goles:
-            <input type="number" id="alta_idcantidadGoles" /> </label
+            <input type="number" id="alta-idcantidadGoles" /> </label
           ><br />
         </div>
         <div id="alta-atributos-profesional">
-          <label for="alta_idtitulo">
+          <label for="alta-idtitulo">
             Titulo:
-            <input type="text" id="alta_idtitulo" /> </label
+            <input type="text" id="alta-idtitulo" /> </label
           ><br />
-          <label for="alta_idfacultad">
+          <label for="alta-idfacultad">
             Facultad:
-            <input type="text" id="alta_idfacultad" /> </label
+            <input type="text" id="alta-idfacultad" /> </label
           ><br />
-          <label for="alta_idanioGraduacion">
+          <label for="alta-idañoGraduacion">
             Año de graduacion:
-            <input type="number" id="alta_idanioGraduacion" /> </label
+            <input type="number" id="alta-idañoGraduacion" /> </label
           ><br />
         </div>
         <button type="button" id="btn-aceptar-alta" class="btn-formalta">
@@ -156,7 +203,7 @@
           Modificar
         </button>
         <button type="button" id="btn-aceptar-borrar" class="btn-formalta">
-            Borrar
+          Borrar
         </button>
         <button type="button" id="btn-cancelar-alta" class="btn-formalta">
           Cancelar
@@ -242,7 +289,7 @@
           edad,
           titulo,
           facultad,
-          anioGraduacion
+          añoGraduacion
         ) {
           super(id, nombre, apellido, edad);
           if (titulo != "") {
@@ -251,8 +298,8 @@
           if (facultad != "") {
             this.facultad = facultad;
           }
-          if (anioGraduacion > 1950) {
-            this.anioGraduacion = anioGraduacion;
+          if (añoGraduacion > 1950) {
+            this.añoGraduacion = añoGraduacion;
           }
         }
         get toString() {
@@ -263,7 +310,7 @@
             " facultad: " +
             this.facultad +
             " anio de graduacion: " +
-            this.anioGraduacion
+            this.añoGraduacion
           );
         }
         get toJson() {
@@ -296,15 +343,15 @@
         headers = tabla.insertRow();
         headers.id = "fila-headers";
         for (atributo of atributos) {
-          cabecero = document.createElement("th");
+          cabecero = document.createElement("td");
           botonCelda = document.createElement("button");
           labelBoton = document.createTextNode(atributo.nombrePropio());
           botonCelda.id = "boton-" + atributo;
           botonCelda.type = "button";
           botonCelda.value = atributo;
           botonCelda.addEventListener("click", (e) => {
-            ordenarPor( e.currentTarget["value"] );
-          })
+            ordenarPor(e.currentTarget["value"]);
+          });
           botonCelda.appendChild(labelBoton);
           cabecero.appendChild(botonCelda);
           headers.appendChild(cabecero);
@@ -312,13 +359,59 @@
       }
 
       ordenAsc = true;
-      function ordenarPor( atributo ) {
-        tablaOrdenada = tablaActual.sort( (a,b) => ordenAsc ? a[atributo] > b[atributo] : a[atributo] < b[atributo]);
+      function ordenarPor(atributo) {
+        tablaOrdenada = tablaActual.sort((a, b) =>
+          ordenAsc
+            ? ordenAscendente(a[atributo], b[atributo])
+            : ordenDescendente(a[atributo], b[atributo])
+        );
         ordenAsc = !ordenAsc;
         crearTabla(tablaOrdenada);
       }
 
+      // 1° Arregle el ordenamiento para que muestre los no definidos a lo ultimo
+      function ordenAscendente(var1, var2) {
+        if (var1 == null && var2 == null) {
+          return 0;
+        } else if (var1 == null) {
+          return 1;
+        } else if (var2 == null) {
+          return -1;
+        } else {
+          if (var1 > var2) {
+            return 1;
+          } else {
+            if (var1 < var2) {
+              return -1;
+            }
+            return 0;
+          }
+        }
+      }
+
+      function ordenDescendente(var1, var2) {
+        if (var1 == null && var2 == null) {
+          return 0;
+        } else if (var1 == null) {
+          return 1;
+        } else if (var2 == null) {
+          return -1;
+        } else {
+          if (var1 > var2) {
+            return -1;
+          } else {
+            if (var1 < var2) {
+              return 1;
+            }
+            return 0;
+          }
+        }
+      }
+
       function agregarElemento(tabla, persona, headers) {
+        if( persona == null ){
+          return null;
+        }
         fila = tabla.insertRow();
         fila.addEventListener("dblclick", (e) => {
           idSeleccionado = e.currentTarget["childNodes"][0]["innerText"];
@@ -330,7 +423,7 @@
         for (header of headers) {
           dato = "--";
           celda = fila.insertCell();
-          if (persona[header] != null) {
+          if (persona[header] != null && persona[header] != "") {
             dato = persona[header];
           }
           celda.appendChild(document.createTextNode(dato));
@@ -357,7 +450,15 @@
           prototipoCheckBox.id = "idchbx_" + atributo;
           prototipoCheckBox.checked = true;
           prototipoCheckBox.addEventListener("click", (e) => {
-
+            // 3° Agrego funcionalidad a los checkboxes
+            let checkbox = e["srcElement"];
+            if (checkbox.checked) {
+              $("tabla-elementos").classList.remove(
+                "ocultar-" + checkbox.value
+              );
+            } else {
+              $("tabla-elementos").classList.add("ocultar-" + checkbox.value);
+            }
           });
           labelCheckbox.htmlFor = prototipoCheckBox.id;
           labelCheckbox.appendChild(prototipoCheckBox);
@@ -370,21 +471,29 @@
       }
 
       function obtenerPropiedadesUnicas(arrayElementos) {
-        listCabeceros = [];
-        arrayElementos.forEach((elemento) => {
-          listCabeceros = [
-            ...new Set(listCabeceros.concat(Object.keys(elemento))),
-          ];
-        });
-        return listCabeceros;
+
+        // 2° Ahora la funcion retorna un arreglo estatico predefinido
+
+        return [
+          "id",
+          "nombre",
+          "apellido",
+          "edad",
+          "titulo",
+          "facultad",
+          "añoGraduacion",
+          "equipo",
+          "posicion",
+          "cantidadGoles",
+        ];
       }
 
       function verificarTipoPersona(persona, tipo) {
         if (tipo != "todos") {
           if (tipo == "futbolista") {
-            return persona["equipo"] != null && persona["posicion"] != null;
+            return persona["equipo"] != null && persona["equipo"] != "";
           } else {
-            return persona["titulo"] != null && persona["facultad"] != null;
+            return persona["titulo"] != null && persona["titulo"] != "";
           }
         } else {
           return true;
@@ -404,6 +513,7 @@
       };
 
       function abrirFormNuevaPersona() {
+        $("titulo-form-alta").innerHTML = "";
         $("titulo-form-alta").appendChild(
           document.createTextNode("Nueva persona")
         );
@@ -413,12 +523,11 @@
         $("alta-atributos-futbolista").style.display = "none";
         $("alta-atributos-profesional").style.display = "none";
         $("altatipoelemento").disabled = false;
-        ids = arrayPersonas.map((p) => p["id"]);
-        $("altaidpersona").value = parseInt( ids.reduce((a, b) => (a < b ? b : a)) ) + 1;
         alternarMostrarFormsAlta();
       }
 
       function abrirFormModificarPersona(persona) {
+        $("titulo-form-alta").innerHTML = "";
         $("titulo-form-alta").appendChild(
           document.createTextNode("Modificacion de persona")
         );
@@ -426,23 +535,21 @@
         $("btn-aceptar-alta").disabled = true;
         $("btn-aceptar-borrar").disabled = false;
         $("altatipoelemento").disabled = true;
-        $("altaidpersona").value = persona["id"];
-        $("alta-idnombre").value = persona["nombre"];
-        $("alta-idapellido").value = persona["apellido"];
-        if (persona["titulo"] != null) {
-          $("alta-atributos-futbolista").style.display = "none";
-          $("alta-atributos-profesional").style.display = "";
-          $("altatipoelemento").value = "profesional";
-          $("alta_idtitulo").value = persona["titulo"];
-          $("alta_idfacultad").value = persona["facultad"];
-          $("alta_idanioGraduacion").value = persona["anioGraduacion"];
-        } else {
+        for (atributo in persona) {
+          idAtributo = "alta-id" + atributo;
+          console.log(idAtributo);
+          if (persona[atributo] != null) {
+            $(idAtributo).value = persona[atributo];
+          }
+        }
+        if (verificarTipoPersona(persona, "futbolista")) {
           $("alta-atributos-profesional").style.display = "none";
           $("alta-atributos-futbolista").style.display = "";
           $("altatipoelemento").value = "futbolista";
-          $("alta_idequipo").value = persona["equipo"];
-          $("alta_idcantidadGoles").value = persona["cantidadGoles"];
-          $("alta_idposicion").value = persona["posicion"];
+        } else {
+          $("alta-atributos-futbolista").style.display = "none";
+          $("alta-atributos-profesional").style.display = "";
+          $("altatipoelemento").value = "profesional";
         }
         alternarMostrarFormsAlta();
       }
@@ -454,16 +561,26 @@
       }
 
       function obtenerDatosDeAlta() {
+        if( $("alta-idid").value == '' || $("alta-idid").value == null ) {
+          ids = arrayPersonas.map((p) => p["id"]);
+          if (ids.length > 0) {
+            $("alta-idid").value =
+              parseInt(ids.reduce((a, b) => (a < b ? b : a))) + 1;
+          } else {
+            $("alta-idid").value = 1;
+          }
+        }
         return {
-          id: $("altaidpersona").value,
+          id: $("alta-idid").value,
           nombre: $("alta-idnombre").value,
           apellido: $("alta-idapellido").value,
-          titulo: $("alta_idtitulo").value,
-          facultad: $("alta_idfacultad").value,
-          anioGraduacion: $("alta_idanioGraduacion").value,
-          equipo: $("alta_idequipo").value,
-          cantidadGoles: $("alta_idcantidadGoles").value,
-          posicion: $("alta_idposicion").value,
+          edad: $("alta-idedad").value,
+          titulo: $("alta-idtitulo").value,
+          facultad: $("alta-idfacultad").value,
+          añoGraduacion: $("alta-idañoGraduacion").value,
+          equipo: $("alta-idequipo").value,
+          cantidadGoles: $("alta-idcantidadGoles").value,
+          posicion: $("alta-idposicion").value,
         };
       }
 
@@ -478,23 +595,23 @@
       }
 
       function validarFormAlta() {
-        if ($("altaidpersona").value > 0) {
-          if ($("alta-idnombre").value != "") {
-            if ($("alta-idapellido").value != "") {
+        if ($("alta-idnombre").value != "") {
+          if ($("alta-idapellido").value != "") {
+            if ($("alta-idedad").value > 0) {
               switch ($("altatipoelemento").value) {
                 case "futbolista":
                   if (
-                    $("alta_idequipo").value != "" &&
-                    $("alta_idequipo").value != "" &&
-                    $("alta_idcantidadGoles").value > -1
+                    $("alta-idequipo").value != "" &&
+                    $("alta-idequipo").value != "" &&
+                    $("alta-idcantidadGoles").value > -1
                   )
                     return true;
                   break;
                 case "profesional":
                   if (
-                    $("alta_idtitulo").value != "" &&
-                    $("alta_idfacultad").value != "" &&
-                    $("alta_idanioGraduacion").value > 1950
+                    $("alta-idtitulo").value != "" &&
+                    $("alta-idfacultad").value != "" &&
+                    $("alta-idañoGraduacion").value > 1950
                   )
                     return true;
                   break;
@@ -505,12 +622,12 @@
         return false;
       }
 
-      function borrarPorId( id ) {
+      function borrarPorId(id) {
         nuevaLista = [];
-        for( persona of arrayPersonas ) {
-            if(persona.id != id ) {
-                nuevaLista.push( persona );
-            }
+        for (persona of arrayPersonas) {
+          if (persona.id != id) {
+            nuevaLista.push(persona);
+          }
         }
         return nuevaLista;
       }
@@ -526,42 +643,17 @@
         return document.getElementById(id);
       }
 
-      let arrayPersonas = JSON.parse(
-        '[{"id":1, "nombre":"Marcelo", "apellido":"Luque", "edad":45, "titulo":"Ingeniero", "facultad":"UTN","añoGraduacion":2002},{"id":2, "nombre":"Ramiro", "apellido":"Escobar", "edad":35, "titulo":"Medico","facultad":"UBA", "añoGraduacion":20012},{"id":3, "nombre":"Facundo", "apellido":"Cairo", "edad":30,"titulo":"Abogado", "facultad":"UCA", "añoGraduacion":2017},{"id":4, "nombre":"Fernando", "apellido":"Nieto","edad":18, "equipo":"Independiente", "posicion":"Delantero", "cantidadGoles":7},{"id":5, "nombre":"Manuel","apellido":"Loza", "edad":20, "equipo":"Racing", "posicion":"Volante", "cantidadGoles":2},{"id":6, "nombre":"Nicolas","apellido":"Serrano", "edad":23, "equipo":"Boca", "posicion":"Arquero", "cantidadGoles":0}]'
-      );
+      function ObtenerPersonas() {
+        return JSON.parse(
+          '[{"id":1, "nombre":"Marcelo", "apellido":"Luque", "edad":45, "titulo":"Ingeniero", "facultad":"UTN","añoGraduacion":2002},{"id":2, "nombre":"Ramiro", "apellido":"Escobar", "edad":35, "titulo":"Medico","facultad":"UBA", "añoGraduacion":20012},{"id":3, "nombre":"Facundo", "apellido":"Cairo", "edad":30,"titulo":"Abogado", "facultad":"UCA", "añoGraduacion":2017},{"id":4, "nombre":"Fernando", "apellido":"Nieto","edad":18, "equipo":"Independiente", "posicion":"Delantero", "cantidadGoles":7},{"id":5, "nombre":"Manuel","apellido":"Loza", "edad":20, "equipo":"Racing", "posicion":"Volante", "cantidadGoles":2},{"id":6, "nombre":"Nicolas","apellido":"Serrano", "edad":23, "equipo":"Boca", "posicion":"Arquero", "cantidadGoles":0}]'
+        );
+      }
 
-    //   arrayPersonas = [];
-    //   for (persona of arrayPersonasjson) {
-    //     if (persona["titulo"] != null) {
-    //       arrayPersonas.push(
-    //         new Profesional(
-    //           persona.id,
-    //           persona.nombre,
-    //           persona.apellido,
-    //           persona.edad,
-    //           persona.titulo,
-    //           persona.facultad,
-    //           persona.añoGraduacion
-    //         )
-    //       );
-    //     } else {
-    //       arrayPersonas.push(
-    //         new Futbolista(
-    //           persona.id,
-    //           persona.nombre,
-    //           persona.apellido,
-    //           persona.edad,
-    //           persona.equipo,
-    //           persona.posicion,
-    //           persona.cantidadGoles
-    //         )
-    //       );
-    //     }
-    //   }
-    
-    crearTabla(arrayPersonas);
-    let tablaActual = arrayPersonas;
-    let arrayPropiedades = obtenerPropiedadesUnicas(arrayPersonas);
+      let arrayPersonas = ObtenerPersonas();
+
+      crearTabla(arrayPersonas);
+      let tablaActual = arrayPersonas;
+      let arrayPropiedades = obtenerPropiedadesUnicas(arrayPersonas);
 
       $("divcontenedor-checkboxes").appendChild(
         crearCheckboxes(arrayPropiedades)
@@ -569,7 +661,7 @@
 
       $("filtrar-por").addEventListener("input", (e) => {
         tablaActual = personasDeTipoFiltrado();
-        crearTabla( tablaActual );
+        crearTabla(tablaActual);
       });
 
       $("btn-calcular-promedio").addEventListener("click", (e) => {
@@ -587,26 +679,28 @@
           terminarFormAlta();
           crearTabla(arrayPersonas);
         } else {
-          alert("Faltan datos o son incorrectos, porfavor revisar datos ingresados");
+          alert(
+            "Faltan datos o son incorrectos, porfavor revisar datos ingresados"
+          );
         }
       });
 
       $("btn-aceptar-borrar").addEventListener("click", (e) => {
-        arrayPersonas = borrarPorId( obtenerDatosDeAlta().id );
+        arrayPersonas = borrarPorId(obtenerDatosDeAlta().id);
         terminarFormAlta();
-        crearTabla( arrayPersonas );
-      })
+        crearTabla(arrayPersonas);
+      });
 
       $("btn-aceptar-modificar").addEventListener("click", (e) => {
-        if( validarFormAlta() ) {
-            arrayPersonas = borrarPorId( obtenerDatosDeAlta().id );
-            arrayPersonas.push( obtenerDatosDeAlta() );
-            terminarFormAlta();
-            crearTabla( arrayPersonas );
+        if (validarFormAlta()) {
+          arrayPersonas = borrarPorId(obtenerDatosDeAlta().id);
+          arrayPersonas.push(obtenerDatosDeAlta());
+          terminarFormAlta();
+          crearTabla(arrayPersonas);
         } else {
-            console.log( "Datos incorrectos");
+          console.log("Datos incorrectos");
         }
-      })
+      });
 
       $("btn-cancelar-alta").addEventListener("click", (e) => {
         terminarFormAlta();
@@ -616,9 +710,15 @@
         if ($("altatipoelemento").value == "futbolista") {
           $("alta-atributos-futbolista").style.display = "";
           $("alta-atributos-profesional").style.display = "none";
+          $("alta-idequipo").value = "";
+          $("alta-idposicion").value = "";
+          $("alta-idcantidadGoles").value = "";
         } else {
           $("alta-atributos-futbolista").style.display = "none";
           $("alta-atributos-profesional").style.display = "";
+          $("alta-idtitulo").value = "";
+          $("alta-idfacultad").value = "";
+          $("alta-idañoGraduacion").value = "";
         }
       });
     </script>
